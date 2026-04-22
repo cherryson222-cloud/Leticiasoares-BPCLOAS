@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Consulta BPC/LOAS | Dra. Letícia Soares</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --navy:       #0c1f3f;
+            --navy-light: #162e58;
+            --gold:       #b8963e;
+            --gold-hover: #a07c30;
+            --white:      #ffffff;
+            --gray:       #4b5563;
+            --bg-light:   #f8f9fb;
+            --radius-sm:  4px;
+            --dur: .4s;
+            --ease: cubic-bezier(.4,0,.2,1);
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-light);
+            color: var(--navy);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 700; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* ── HERO ── */
+        .hero-bpc {
+            background: var(--navy);
+            color: var(--white);
+            padding: clamp(60px, 10vw, 100px) 0 40px;
+            text-align: center;
+        }
+
+        .sec-label {
+            display: block;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            font-size: .75rem;
+            margin-bottom: 12px;
+        }
+
+        .hero-bpc h1 { font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.1; margin-bottom: 20px; }
+        .hero-bpc p { font-size: clamp(1rem, 2vw, 1.2rem); opacity: 0.9; max-width: 700px; margin: 0 auto 30px; }
+
+        /* ── MULTI-STEP FORM ── */
+        .form-section { padding: 40px 0 80px; }
+
+        .multi-step-box {
+            max-width: 650px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: var(--radius-sm);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            padding: clamp(25px, 5vw, 45px);
+            border-top: 5px solid var(--gold);
+        }
+
+        /* Progress Bar */
+        .progress-wrapper { margin-bottom: 35px; }
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--gray);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        .progress-bar-bg { height: 4px; background: #eee; border-radius: 2px; overflow: hidden; }
+        .progress-bar-fill { 
+            height: 100%; 
+            background: var(--gold); 
+            width: 12.5%; 
+            transition: width var(--dur) var(--ease); 
+        }
+
+        /* Steps */
+        .step { display: none; }
+        .step.active { display: block; animation: fadeIn .5s var(--ease); }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .step h2 { font-size: 1.8rem; margin-bottom: 25px; color: var(--navy); }
+
+        /* Options */
+        .option-container { display: grid; gap: 12px; }
+        
+        .option-label {
+            display: flex;
+            align-items: center;
+            padding: 16px;
+            border: 1.5px solid #e5e7eb;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: var(--dur) var(--ease);
+            font-weight: 500;
+            position: relative;
+        }
+
+        .option-label:hover { border-color: var(--gold); background: rgba(184,150,62,0.03); }
+
+        input[type="radio"] {
+            appearance: none;
+            width: 18px; height: 18px;
+            border: 2px solid #d1d5db;
+            border-radius: 50%;
+            margin-right: 12px;
+            transition: var(--dur) var(--ease);
+            flex-shrink: 0;
+        }
+
+        input[type="radio"]:checked {
+            border-color: var(--gold);
+            border-width: 5px;
+        }
+
+        input[type="radio"]:checked + span { color: var(--gold); font-weight: 700; }
+        .option-label:has(input:checked) { border-color: var(--gold); background: rgba(184,150,62,0.05); }
+
+        /* Inputs de Texto */
+        .input-group { margin-bottom: 15px; }
+        .input-group label { display: block; font-size: 0.8rem; font-weight: 600; color: var(--gray); margin-bottom: 5px; }
+        .form-control {
+            width: 100%;
+            padding: 14px;
+            border: 1.5px solid #e5e7eb;
+            border-radius: var(--radius-sm);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color var(--dur) var(--ease);
+        }
+        .form-control:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(184,150,62,0.1); }
+
+        /* Buttons */
+        .btn-row { display: flex; gap: 15px; margin-top: 35px; }
+        
+        .btn {
+            flex: 1;
+            padding: 16px;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            border: none;
+            font-family: 'Inter', sans-serif;
+            transition: var(--dur) var(--ease);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-prev { background: #e5e7eb; color: var(--gray); }
+        .btn-prev:hover { background: #d1d5db; }
+
+        .btn-next { background: var(--gold); color: var(--white); }
+        .btn-next:hover { background: var(--gold-hover); transform: translateY(-2px); }
+
+        .hidden { display: none; }
+
+        /* Footer */
+        .site-footer {
+            background: var(--navy);
+            color: rgba(255,255,255,0.6);
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 480px) {
+            .multi-step-box { padding: 25px 20px; }
+            .step h2 { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero-bpc">
+        <div class="container">
+            <span class="sec-label">Benefício Assistencial (BPC/LOAS)</span>
+            <h1>Você pode ter direito a 1 salário mínimo por mês, mesmo sem nunca ter contribuído</h1>
+            <p>O BPC/LOAS é garantido por lei para idosos 65+ e pessoas com deficiência em baixa renda. Descubra agora se você se enquadra.</p>
+        </div>
+    </header>
+
+    <section class="form-section">
+        <div class="container">
+            <div class="multi-step-box">
+                
+                <div class="progress-wrapper">
+                    <div class="progress-info">
+                        <span id="step-text">Etapa 1 de 8</span>
+                        <span id="step-percent">12%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" id="pb-fill"></div>
+                    </div>
+                </div>
+
+                <form id="bpcForm">
+                    <div class="step active">
+                        <h2>Para quem é o benefício?</h2>
+                        <div class="option-container">
+                            <label class="option-label"><input type="radio" name="quem" value="Mim mesmo"><span>Para mim mesmo(a)</span></label>
+                            <label class="option-label"><input type="radio" name="quem" value="Pai/Mãe"><span>Para meu pai/mãe</span></label>
+                            <label class="option-label"><input type="radio" name="quem" value="Filho"><span>Para meu(minha) filho(a)</span></label>
+                            <label class="option-label"><input type="radio" name="quem" value="Outro"><span>Para outro familiar</span></label>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <h2>Idade do beneficiário:</h2>
+                        <div class="option-container">
+                            <label class="option-label"><input type="radio" name="idade" value="-18"><span>Menos de 18 anos</span></label>
+                            <label class="option-label"><input type="radio" name="idade" value="18-64"><span>Entre 18 e 64 anos</span></label>
+                            <label class="option-label"><input type="radio" name="idade" value="65+"><span>65 anos ou mais</span></label>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <h2>Possui deficiência ou doença grave?</h2>
+                        <div class="option-container">
+                            <label class="option-label"><input type="radio" name="saude" value="Sim laudo"><span>Sim, com laudo médico recente</span></label>
+                            <label class="option-label"><input type="radio" name="saude" value="Sim sem laudo"><span>Sim, mas sem laudo ainda</span></label>
+                            <label class="option-label"><input type="radio" name="saude" value="Não"><span>Não possui</span></label>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <h2>Situação do CadÚnico:</h2>
+                        <div class="option-container">
+                            <label class="option-label"><input type="radio" name="cad" value="Atualizado"><span>Possui atualizado (menos de 2 anos)</span></label>
+                            <label class="option-label"><input type="radio" name="cad" value="Desatualizado"><span>Possui desatualizado</span></label>
+                            <label class="option-label"><input type="radio" name="cad" value="Não"><span>Não possui</span></label>
+                            <label class="option-label"><input type="radio" name="cad" value="Não sei"><span>Não sei o que é</span></label>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <h2>Quantas pessoas moram na casa?</h2>
+                        <div class="option-container">
+                            <label class="option-label"><input type="radio" name="pessoas" value="1"><span>Moro sozinho(a)</span></label>
+                            <label class="option-label"><input type="radio" name="pessoas" value="2"><span>2 pessoas</span></label>
+                            <label class="option-label"><input type="radio" name="pessoas" value="3"><span>3 pessoas</span></label>
+                            <label class="option-label"><input type="radio" name="pessoas" value="4"><span>4 pessoas</span></label>
+                            <label class="option-label"><input type="radio" name="pessoas" value="5+"><span>5 ou mais pessoas</span></label>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <h2>Renda mensal total da família:</h2>
+                        <div class="option-container">
+                            <label class="option-label"><input type="radio" name="renda" value="0"><span>Nenhuma renda</span></label>
+                            <label class="option-label"><input type="radio" name="renda" value="800"><span>Até R$ 800</span></label>
+                            <label class="option-label"><input type="radio" name="renda" value="1600"><span>R$ 801 a R$ 1.600</span></label>
+                            <label class="option-label"><input type="radio" name="renda" value="2500"><span>R$ 1.601 a R$ 2.500</span></label>
+                            <label class="option-label"><input type="radio" name="renda" value="2501+"><span>Acima de R$ 2.500</span></label>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <h2>INSS já negou BPC antes?</h2>
+                        <div class="option-container">
+                            <label class="option-label"><input type="radio" name="negado" value="Sim"><span>Sim, foi negado</span></label>
+                            <label class="option-label"><input type="radio" name="negado" value="Não"><span>Não, nunca pedimos</span></label>
+                            <label class="option-label"><input type="radio" name="negado" value="Analise"><span>Está em análise</span></label>
+                        </div>
+                    </div>
+
+                    <div class="step">
+                        <h2>Dados para contato:</h2>
+                        <div class="input-group">
+                            <label>Nome Completo</label>
+                            <input type="text" class="form-control" placeholder="Seu nome aqui">
+                        </div>
+                        <div class="input-group">
+                            <label>WhatsApp</label>
+                            <input type="tel" class="form-control" placeholder="(00) 00000-0000" id="whatsapp">
+                        </div>
+                        <div class="input-group">
+                            <label>Cidade/Estado</label>
+                            <input type="text" class="form-control" placeholder="Ex: Recife/PE">
+                        </div>
+                        <label style="display:block; font-size: 0.8rem; font-weight: 600; color: var(--gray); margin-bottom: 8px;">Melhor horário para contato:</p>
+                        <div style="display: flex; gap: 8px;">
+                            <label class="option-label" style="flex:1; padding:10px; justify-content:center;"><input type="radio" name="hora" value="M"><span>Manhã</span></label>
+                            <label class="option-label" style="flex:1; padding:10px; justify-content:center;"><input type="radio" name="hora" value="T"><span>Tarde</span></label>
+                            <label class="option-label" style="flex:1; padding:10px; justify-content:center;"><input type="radio" name="hora" value="N"><span>Noite</span></label>
+                        </div>
+                    </div>
+
+                    <div class="btn-row">
+                        <button type="button" class="btn btn-prev hidden" id="prevBtn">Voltar</button>
+                        <button type="button" class="btn btn-next" id="nextBtn">Quero Saber Se Tenho Direito</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>Dra. Letícia Soares | Especialista em Direito Previdenciário</p>
+            <p>&copy; 2026 Dra. Letícia Soares. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        let currentStep = 0;
+        const steps = document.querySelectorAll('.step');
+        const nextBtn = document.getElementById('nextBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const pbFill = document.getElementById('pb-fill');
+        const stepText = document.getElementById('step-text');
+        const stepPercent = document.getElementById('step-percent');
+
+        function updateProgress() {
+            const pct = ((currentStep + 1) / steps.length) * 100;
+            pbFill.style.width = pct + '%';
+            stepText.innerText = `Etapa ${currentStep + 1} de 8`;
+            stepPercent.innerText = Math.round(pct) + '%';
+        }
+
+        nextBtn.addEventListener('click', () => {
+            // Validação simples de seleção
+            if (currentStep < steps.length - 1) {
+                const checked = steps[currentStep].querySelector('input[type="radio"]:checked');
+                if (!checked && currentStep !== 7) { 
+                    alert("Por favor, selecione uma opção para continuar.");
+                    return;
+                }
+                
+                steps[currentStep].classList.remove('active');
+                currentStep++;
+                steps[currentStep].classList.add('active');
+                
+                prevBtn.classList.remove('hidden');
+                if (currentStep === steps.length - 1) {
+                    nextBtn.innerText = "Finalizar Análise";
+                }
+            } else {
+                alert("Análise enviada com sucesso! Aguarde nosso contato em breve.");
+                window.location.reload();
+            }
+            updateProgress();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            steps[currentStep].classList.remove('active');
+            currentStep--;
+            steps[currentStep].classList.add('active');
+            
+            if (currentStep === 0) prevBtn.classList.add('hidden');
+            nextBtn.innerText = "Próximo";
+            updateProgress();
+        });
+
+        // Máscara de Telefone
+        document.getElementById('whatsapp').addEventListener('input', (e) => {
+            let val = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
+            e.target.value = !val[2] ? val[1] : '(' + val[1] + ') ' + val[2] + (val[3] ? '-' + val[3] : '');
+        });
+    </script>
+</body>
+</html>
