@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BPC/LOAS – Letícia Soares Advocacia Previdenciária</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9922A;
+    --gold-light: #E2A84B;
+    --gold-dark: #9B6E1A;
+    --dark: #1A1008;
+    --dark2: #231608;
+    --off-white: #F9F4EC;
+    --white: #FFFFFF;
+    --gray: #5C5147;
+    --light-gray: #EDE8DF;
+    --green: #2E7D4F;
+    --red: #B83232;
+    --radius: 10px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--off-white);
+    color: var(--dark);
+    line-height: 1.6;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--dark);
+    padding: 14px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .logo-mark {
+    background: var(--gold);
+    color: #fff;
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 20px;
+    width: 44px; height: 44px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 6px;
+  }
+
+  .logo-text strong {
+    display: block;
+    color: var(--white);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: .5px;
+    line-height: 1.2;
+  }
+
+  .logo-text span {
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .header-badges {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .badge {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: var(--off-white);
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.3;
+  }
+
+  .badge svg { color: var(--gold); flex-shrink: 0; }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, var(--dark2) 55%, #2f1c08 100%);
+    position: relative;
+    overflow: hidden;
+    padding: 60px 40px 0;
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    align-items: flex-end;
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 70% 100%, rgba(201,146,42,.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    background: rgba(201,146,42,.15);
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+  }
+
+  .hero-content { padding-bottom: 60px; }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 4vw, 50px);
+    font-weight: 900;
+    line-height: 1.12;
+    color: var(--white);
+    margin-bottom: 18px;
+  }
+
+  .hero h1 em { color: var(--gold); font-style: normal; }
+
+  .hero-sub {
+    color: #c5b9a9;
+    font-size: 15px;
+    margin-bottom: 26px;
+    max-width: 420px;
+  }
+
+  .checkmarks { list-style: none; margin-bottom: 32px; display: flex; flex-direction: column; gap: 10px; }
+
+  .checkmarks li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #e0d5c5;
+    font-size: 14px;
+  }
+
+  .checkmarks li::before {
+    content: '';
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex-shrink: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+    background-size: 13px;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .btn-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--gold);
+    color: var(--white);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 16px 28px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background .2s, transform .15s;
+  }
+
+  .btn-cta:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+  .hero-trust {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 18px;
+    color: #8a7d6e;
+    font-size: 12px;
+  }
+
+  .hero-image img {
+    display: block;
+    width: 100%;
+    max-width: 380px;
+    object-fit: contain;
+    border-radius: 12px 12px 0 0;
+    filter: drop-shadow(0 -10px 30px rgba(0,0,0,.5));
+  }
+
+  /* Fallback avatar */
+  .hero-avatar-placeholder {
+    width: 340px;
+    height: 400px;
+    background: linear-gradient(160deg, #3a2010, #5a3318);
+    border-radius: 12px 12px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold);
+    font-size: 80px;
+  }
+
+  /* ── QUIZ SECTION ── */
+  .quiz-wrap {
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: 0 8px 40px rgba(0,0,0,.12);
+    max-width: 640px;
+    margin: -30px auto 0;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+  }
+
+  .quiz-header {
+    padding: 28px 32px 20px;
+    text-align: center;
+  }
+
+  .quiz-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--dark);
+    margin-bottom: 16px;
+  }
+
+  .quiz-header h2 span { color: var(--gold); }
+
+  .progress-bar-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 4px;
+  }
+
+  .progress-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gray);
+    white-space: nowrap;
+  }
+
+  .progress-track {
+    flex: 1;
+    height: 6px;
+    background: var(--light-gray);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    width: 20%;
+    background: var(--gold);
+    border-radius: 10px;
+    transition: width .4s ease;
+  }
+
+  .quiz-body { padding: 0 32px 28px; }
+
+  .quiz-question {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 16px;
+  }
+
+  .quiz-options { display: flex; flex-direction: column; gap: 10px; }
+
+  .quiz-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+    border: 1.5px solid var(--light-gray);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: border-color .2s, background .2s;
+    font-size: 14px;
+    color: var(--dark);
+    background: #fff;
+  }
+
+  .quiz-option:hover,
+  .quiz-option.selected {
+    border-color: var(--gold);
+    background: #fdf6eb;
+  }
+
+  .quiz-option svg { color: var(--gold-dark); flex-shrink: 0; }
+
+  .quiz-footer {
+    padding: 0 32px 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .btn-continue {
+    width: 100%;
+    padding: 16px;
+    background: var(--gold);
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background .2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .btn-continue:hover { background: var(--gold-light); }
+
+  .quiz-privacy {
+    font-size: 11px;
+    color: #9b9080;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  /* ── SECTION WRAPPER ── */
+  .section { max-width: 900px; margin: 0 auto; padding: 60px 24px; }
+
+  .section-title {
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(22px, 3vw, 32px);
+    font-weight: 900;
+    color: var(--dark);
+    margin-bottom: 10px;
+  }
+
+  .section-title em { color: var(--gold); font-style: normal; }
+
+  .section-sub {
+    text-align: center;
+    font-size: 15px;
+    color: var(--gray);
+    margin-bottom: 40px;
+  }
+
+  /* ── ERROR SECTION ── */
+  .errors-bg { background: var(--white); }
+
+  .error-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .error-card {
+    background: var(--off-white);
+    border-radius: 12px;
+    padding: 28px 22px;
+    text-align: center;
+    border: 1px solid var(--light-gray);
+  }
+
+  .error-icon {
+    width: 56px; height: 56px;
+    background: #f5ede0;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 16px;
+    color: var(--gold);
+  }
+
+  .error-card h3 {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--dark);
+  }
+
+  .error-card p { font-size: 13px; color: var(--gray); line-height: 1.55; }
+
+  .alert-box {
+    background: #fef9f0;
+    border: 1.5px solid var(--gold);
+    border-radius: 10px;
+    padding: 18px 22px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--dark);
+  }
+
+  .alert-box svg { color: var(--gold); flex-shrink: 0; }
+
+  /* ── COMPARISON ── */
+  .comparison-bg { background: var(--off-white); }
+
+  .comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr 56px 1fr;
+    gap: 0;
+    align-items: start;
+  }
+
+  .comp-card {
+    border-radius: 12px;
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .comp-card.bad { background: #fff5f5; border: 1.5px solid #f5c0c0; }
+  .comp-card.good { background: #f2faf6; border: 1.5px solid #b3dfc4; }
+
+  .comp-card-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+
+  .comp-card-head h3 {
+    font-size: 15px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+  }
+
+  .comp-card.bad .comp-card-head h3 { color: var(--red); }
+  .comp-card.good .comp-card-head h3 { color: var(--green); }
+
+  .comp-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--dark);
+    line-height: 1.4;
+  }
+
+  .comp-item svg { flex-shrink: 0; margin-top: 2px; }
+
+  .vs-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gold);
+    color: #fff;
+    font-weight: 900;
+    font-size: 13px;
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    margin: 40px auto 0;
+  }
+
+  /* ── METHOD STEPS ── */
+  .method-bg { background: var(--white); }
+
+  .steps {
+    display: flex;
+    gap: 0;
+    position: relative;
+    counter-reset: step;
+  }
+
+  .steps::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: var(--light-gray);
+    z-index: 0;
+  }
+
+  .step {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+    position: relative;
+    z-index: 1;
+    padding: 0 8px;
+  }
+
+  .step-num {
+    width: 56px; height: 56px;
+    background: var(--gold);
+    color: #fff;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 900;
+    flex-shrink: 0;
+  }
+
+  .step h4 { font-size: 13px; font-weight: 700; color: var(--dark); line-height: 1.35; }
+  .step p { font-size: 12px; color: var(--gray); }
+
+  /* ── ABOUT ── */
+  .about-bg { background: var(--off-white); }
+
+  .about-inner {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+
+  .about-photo {
+    width: 200px; height: 240px;
+    border-radius: 12px;
+    object-fit: cover;
+    background: linear-gradient(160deg, #3a2010, #5a3318);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 60px;
+    overflow: hidden;
+  }
+
+  .about-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--dark);
+    margin-bottom: 4px;
+  }
+
+  .about-title {
+    color: var(--gold);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .about-desc { font-size: 14px; color: var(--gray); margin-bottom: 22px; line-height: 1.6; }
+
+  .about-badges { display: flex; gap: 14px; flex-wrap: wrap; }
+
+  .about-badge {
+    background: var(--white);
+    border: 1px solid var(--light-gray);
+    border-radius: 8px;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--dark);
+  }
+
+  .about-badge svg { color: var(--gold); }
+
+  /* ── FAQ ── */
+  .faq-bg { background: var(--white); }
+
+  .faq-list { display: flex; flex-direction: column; gap: 1px; }
+
+  .faq-item {
+    border-bottom: 1px solid var(--light-gray);
+    overflow: hidden;
+  }
+
+  .faq-q {
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+    padding: 18px 0;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--dark);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .faq-icon {
+    width: 24px; height: 24px;
+    border: 1.5px solid var(--gold);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold);
+    flex-shrink: 0;
+    font-size: 16px;
+    transition: transform .2s;
+  }
+
+  .faq-a {
+    font-size: 14px;
+    color: var(--gray);
+    padding-bottom: 16px;
+    display: none;
+    line-height: 1.65;
+  }
+
+  .faq-item.open .faq-a { display: block; }
+  .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+  /* ── CTA BANNER ── */
+  .cta-banner {
+    background: var(--dark);
+    padding: 40px 24px;
+    text-align: center;
+  }
+
+  .cta-banner p {
+    color: var(--white);
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .cta-banner p em { color: var(--gold); font-style: normal; }
+
+  .cta-banner small {
+    display: block;
+    color: #8a7d6e;
+    font-size: 13px;
+    margin-bottom: 22px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark2);
+    padding: 20px 32px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-info { display: flex; align-items: center; gap: 8px; color: #9b9080; font-size: 12px; }
+  .footer-info svg { color: var(--gold); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 992px) {
+    .hero {
+      grid-template-columns: 1fr 340px;
+      padding: 50px 30px 0;
+    }
+    .hero h1 {
+      font-size: clamp(28px, 3.5vw, 42px);
+    }
+    .hero-avatar-placeholder {
+      height: 340px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    header {
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      padding: 16px 20px;
+    }
+    .header-badges {
+      justify-content: center;
+      margin-top: 10px;
+    }
+    .hero {
+      grid-template-columns: 1fr;
+      padding: 40px 20px 0;
+      text-align: center;
+    }
+    .hero-image { display: block; margin: 0 auto; max-width: 280px; }
+    .hero-avatar-placeholder { height: 280px; font-size: 60px; }
+    .hero-content { padding-bottom: 30px; display: flex; flex-direction: column; align-items: center; }
+    .hero-sub { margin: 0 auto 26px; }
+    .checkmarks { width: fit-content; margin: 0 auto 32px; text-align: left; }
+    .checkmarks li { justify-content: flex-start; }
+    .btn-cta { width: 100%; justify-content: center; }
+    .error-cards { grid-template-columns: 1fr; }
+    .comparison-grid { grid-template-columns: 1fr; gap: 16px; }
+    .vs-circle { margin: 0 auto; }
+    .steps { flex-direction: column; gap: 20px; }
+    .steps::before { display: none; }
+    .step { flex-direction: row; text-align: left; }
+    .about-inner { grid-template-columns: 1fr; }
+    .about-photo { margin: 0 auto; }
+  }
+
+  @media (max-width: 480px) {
+    .header-badges {
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+    }
+    .hero h1 { font-size: 28px; }
+    .hero-trust { flex-direction: column; text-align: center; line-height: 1.4; gap: 6px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════ HEADER ══════════════ -->
+<header>
+  <a href="#" class="logo">
+    <div class="logo-mark">LS</div>
+    <div class="logo-text">
+      <strong>Letícia Soares</strong>
+      <span>Advocacia Previdenciária</span>
+    </div>
+  </a>
+  <div class="header-badges">
+    <div class="badge">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <span>Atendimento<br>100% Online<br>em todo o Brasil</span>
+    </div>
+    <div class="badge">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      <span>Sigilo Total<br>e Proteção<br>de Dados</span>
+    </div>
+    <div class="badge">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20v-1a8 8 0 0 1 16 0v1"/></svg>
+      <span>OAB/MG 205775<br>Advocacia<br>Previdenciária</span>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════ HERO ══════════════ -->
+<div style="background: linear-gradient(135deg, #1A1008 55%, #2f1c08 100%); position:relative; overflow:hidden;">
+  <div class="hero">
+    <div class="hero-content">
+      <div class="hero-tag">BPC / LOAS</div>
+      <h1>BPC/LOAS negado<br>ou com medo de<br><em>pedir errado?</em></h1>
+      <p class="hero-sub">Antes de enviar ao INSS, veja se o CadÚnico, a renda da família e os documentos estão preparados do jeito certo.</p>
+      <ul class="checkmarks">
+        <li>Análise completa do seu caso</li>
+        <li>Reduza o risco de negativa</li>
+        <li>Atendimento humanizado e sigiloso</li>
+      </ul>
+      <a href="https://wa.me/5531992681501" class="btn-cta">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.117 1.523 5.848L0 24l6.335-1.51A11.955 11.955 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.896 0-3.67-.525-5.184-1.436l-.372-.222-3.76.897.912-3.664-.242-.382A9.944 9.944 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        Verificar Meu Caso Agora
+      </a>
+      <div class="hero-trust">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        Atendimento online no Brasil &nbsp;·&nbsp; Sigilo profissional • OAB/MG 205775
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="hero-avatar-placeholder">👩‍⚖️</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ QUIZ ══════════════ -->
+<div style="background: var(--off-white); padding: 40px 16px 60px;">
+  <div class="quiz-wrap" id="quiz-container">
+    <div class="quiz-header" id="quiz-intro">
+      <h2>Você pode ter direito a 1 salário mínimo por mês, mesmo sem nunca ter contribuído</h2>
+      <p style="color: var(--gray); font-size: 15px; margin-bottom: 20px;">O BPC/LOAS é garantido por lei para idosos 65+ e pessoas com deficiência em baixa renda. Descubra se você se enquadra.</p>
+      <button class="btn-cta" style="width: 100%; justify-content: center;" onclick="startQuiz()">Quero Saber Se Tenho Direito</button>
+    </div>
+
+    <div id="quiz-form" style="display: none;">
+      <div class="quiz-header">
+      <div class="progress-bar-wrap">
+        <span class="progress-label" id="step-text">ETAPA 1 DE 8</span>
+        <div class="progress-track"><div class="progress-fill" id="progressFill" style="width: 12.5%;"></div></div>
+        <span class="progress-label" id="step-percent">12%</span>
+      </div>
+    </div>
+
+    <div class="quiz-body">
+        <div class="quiz-step active" id="step-1">
+          <p class="quiz-question">1. Para quem é o benefício?</p>
+          <div class="quiz-options">
+            <label class="quiz-option"><input type="radio" name="q1" value="Para mim mesmo(a)" style="display:none"> Para mim mesmo(a)</label>
+            <label class="quiz-option"><input type="radio" name="q1" value="Para meu pai/mãe" style="display:none"> Para meu pai/mãe</label>
+            <label class="quiz-option"><input type="radio" name="q1" value="Para meu(minha) filho(a)" style="display:none"> Para meu(minha) filho(a)</label>
+            <label class="quiz-option"><input type="radio" name="q1" value="Para outro familiar" style="display:none"> Para outro familiar</label>
+          </div>
+        </div>
+        <div class="quiz-step" id="step-2" style="display:none;">
+          <p class="quiz-question">2. Idade do beneficiário:</p>
+          <div class="quiz-options">
+            <label class="quiz-option"><input type="radio" name="q2" value="Menos de 18 anos" style="display:none"> Menos de 18 anos</label>
+            <label class="quiz-option"><input type="radio" name="q2" value="Entre 18 e 64 anos" style="display:none"> Entre 18 e 64 anos</label>
+            <label class="quiz-option"><input type="radio" name="q2" value="65 anos ou mais" style="display:none"> 65 anos ou mais</label>
+          </div>
+        </div>
+        <div class="quiz-step" id="step-3" style="display:none;">
+          <p class="quiz-question">3. Possui deficiência ou doença grave?</p>
+          <div class="quiz-options">
+            <label class="quiz-option"><input type="radio" name="q3" value="Sim, com laudo médico recente" style="display:none"> Sim, com laudo médico recente</label>
+            <label class="quiz-option"><input type="radio" name="q3" value="Sim, mas sem laudo ainda" style="display:none"> Sim, mas sem laudo ainda</label>
+            <label class="quiz-option"><input type="radio" name="q3" value="Não possui" style="display:none"> Não possui</label>
+          </div>
+        </div>
+        <div class="quiz-step" id="step-4" style="display:none;">
+          <p class="quiz-question">4. Situação do CadÚnico:</p>
+          <div class="quiz-options">
+            <label class="quiz-option"><input type="radio" name="q4" value="Possui atualizado" style="display:none"> Possui atualizado (menos de 2 anos)</label>
+            <label class="quiz-option"><input type="radio" name="q4" value="Possui desatualizado" style="display:none"> Possui desatualizado</label>
+            <label class="quiz-option"><input type="radio" name="q4" value="Não possui" style="display:none"> Não possui</label>
+            <label class="quiz-option"><input type="radio" name="q4" value="Não sei o que é" style="display:none"> Não sei o que é</label>
+          </div>
+        </div>
+        <div class="quiz-step" id="step-5" style="display:none;">
+          <p class="quiz-question">5. Quantas pessoas moram na casa?</p>
+          <div class="quiz-options">
+            <label class="quiz-option"><input type="radio" name="q5" value="1" style="display:none"> Moro sozinho(a)</label>
+            <label class="quiz-option"><input type="radio" name="q5" value="2" style="display:none"> 2 pessoas</label>
+            <label class="quiz-option"><input type="radio" name="q5" value="3" style="display:none"> 3 pessoas</label>
+            <label class="quiz-option"><input type="radio" name="q5" value="4" style="display:none"> 4 pessoas</label>
+            <label class="quiz-option"><input type="radio" name="q5" value="5" style="display:none"> 5 ou mais pessoas</label>
+          </div>
+        </div>
+        <div class="quiz-step" id="step-6" style="display:none;">
+          <p class="quiz-question">6. Renda mensal total da família:</p>
+          <div class="quiz-options">
+            <label class="quiz-option"><input type="radio" name="q6" value="0" style="display:none"> Nenhuma renda</label>
+            <label class="quiz-option"><input type="radio" name="q6" value="800" style="display:none"> Até R$ 800</label>
+            <label class="quiz-option"><input type="radio" name="q6" value="1600" style="display:none"> R$ 801 a R$ 1.600</label>
+            <label class="quiz-option"><input type="radio" name="q6" value="2500" style="display:none"> R$ 1.601 a R$ 2.500</label>
+            <label class="quiz-option"><input type="radio" name="q6" value="2501+" style="display:none"> Acima de R$ 2.500</label>
+          </div>
+        </div>
+        <div class="quiz-step" id="step-7" style="display:none;">
+          <p class="quiz-question">7. INSS já negou BPC antes?</p>
+          <div class="quiz-options">
+            <label class="quiz-option"><input type="radio" name="q7" value="Sim" style="display:none"> Sim, foi negado</label>
+            <label class="quiz-option"><input type="radio" name="q7" value="Não" style="display:none"> Não, nunca pedimos</label>
+            <label class="quiz-option"><input type="radio" name="q7" value="Em análise" style="display:none"> Está em análise</label>
+          </div>
+        </div>
+        <div class="quiz-step" id="step-8" style="display:none;">
+          <p class="quiz-question">8. Dados para contato:</p>
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <input type="text" id="contact-name" placeholder="Nome completo *" style="padding: 14px; border: 1.5px solid var(--light-gray); border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 14px; width: 100%; box-sizing: border-box;" required>
+            <input type="tel" id="contact-phone" placeholder="WhatsApp *" style="padding: 14px; border: 1.5px solid var(--light-gray); border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 14px; width: 100%; box-sizing: border-box;" required>
+            <input type="text" id="contact-city" placeholder="Cidade/Estado *" style="padding: 14px; border: 1.5px solid var(--light-gray); border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 14px; width: 100%; box-sizing: border-box;" required>
+            <div>
+              <p style="font-size: 13px; color: var(--dark); font-weight: 700; margin-bottom: 8px;">Melhor horário *</p>
+              <div style="display: flex; gap: 10px;">
+                <label class="quiz-option" style="flex:1; justify-content:center; padding: 10px;"><input type="radio" name="q8_time" value="Manhã" style="display:none"> Manhã</label>
+                <label class="quiz-option" style="flex:1; justify-content:center; padding: 10px;"><input type="radio" name="q8_time" value="Tarde" style="display:none"> Tarde</label>
+                <label class="quiz-option" style="flex:1; justify-content:center; padding: 10px;"><input type="radio" name="q8_time" value="Noite" style="display:none"> Noite</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="quiz-footer" style="flex-direction: row; gap: 10px; padding: 0 32px 28px;">
+        <button class="btn-continue" id="btn-prev" onclick="prevStep()" style="display:none; background: #e0d5c5; color: var(--dark); flex: 1;">Voltar</button>
+        <button class="btn-continue" id="btn-next" onclick="nextStep()" style="flex: 2;">
+          Próximo
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+      <div style="text-align: center; padding-bottom: 20px;">
+        <span class="quiz-privacy" style="justify-content: center;">
+          <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Suas informações estão protegidas e <strong>não serão compartilhadas.</strong>
+        </span>
+      </div>
+    </div>
+    
+    <div id="quiz-result" style="display:none; text-align: center; padding: 40px 32px;">
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ ERROR SECTION ══════════════ -->
+<div class="errors-bg">
+  <div class="section">
+    <h2 class="section-title">O ERRO QUE MAIS <em>PREJUDICA FAMÍLIAS</em></h2>
+    <p class="section-sub">O INSS não nega por falta de necessidade.<br>Nega por falta de prova ou erro de informação.</p>
+
+    <div class="error-cards">
+      <div class="error-card">
+        <div class="error-icon">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="15" y2="11"/><line x1="9" y1="15" x2="12" y2="15"/></svg>
+        </div>
+        <h3>CadÚnico desatualizado</h3>
+        <p>O cadastro precisa estar atualizado e com CPF de todos os membros da família.</p>
+      </div>
+      <div class="error-card">
+        <div class="error-icon">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <h3>Renda mal calculada</h3>
+        <p>A renda por pessoa é calculada somando os rendimentos familiares e dividindo pelo número de integrantes.</p>
+      </div>
+      <div class="error-card">
+        <div class="error-icon">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="11" y2="17"/></svg>
+        </div>
+        <h3>Provas insuficientes</h3>
+        <p>Em casos de deficiência, é essencial apresentar laudos recentes e documentos que comprovem o impedimento de longo prazo.</p>
+      </div>
+    </div>
+
+    <div class="alert-box">
+      <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <span><strong>BPC negado não significa fim do caminho.</strong> Muitas vezes é possível reverter com a estratégia certa.</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ COMPARISON ══════════════ -->
+<div class="comparison-bg">
+  <div class="section">
+    <h2 class="section-title">PEDIR SOZINHO X <em>PEDIDO BPC SEGURO</em></h2>
+    <div class="comparison-grid" style="margin-top:32px;">
+      <!-- BAD -->
+      <div class="comp-card bad">
+        <div class="comp-card-head">
+          <svg width="22" height="22" fill="none" stroke="#B83232" stroke-width="2.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+          <h3>Pedir Sozinho</h3>
+        </div>
+        <div class="comp-item">
+          <svg width="16" height="16" fill="none" stroke="#B83232" stroke-width="2.5" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          CadÚnico incompleto ou desatualizado
+        </div>
+        <div class="comp-item">
+          <svg width="16" height="16" fill="none" stroke="#B83232" stroke-width="2.5" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          Renda da família mal calculada
+        </div>
+        <div class="comp-item">
+          <svg width="16" height="16" fill="none" stroke="#B83232" stroke-width="2.5" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          Documentos faltando ou incorretos
+        </div>
+        <div class="comp-item">
+          <svg width="16" height="16" fill="none" stroke="#B83232" stroke-width="2.5" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          Laudos fracos ou antigos
+        </div>
+        <div class="comp-item">
+          <svg width="16" height="16" fill="none" stroke="#B83232" stroke-width="2.5" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          Negativa inesperada do INSS
+        </div>
+      </div>
+
+      <!-- VS -->
+      <div class="vs-circle">VS</div>
+
+      <!-- GOOD -->
+      <div class="comp-card good">
+        <div class="comp-card-head">
+          <svg width="22" height="22" fill="none" stroke="#2E7D4F" stroke-width="2.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="20 6 9 17 4 12"/></svg>
+          <h3>Pedido BPC Seguro</h3>
+        </div>
+        <div class="comp-item">
+          <svg width="16" height="16" fill="none" stroke="#2E7D4F" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          Conferência completa do CadÚnico
+        </div>
+        <div class="comp-item">
+          <svg width="16" height="16" fill="none" stroke="#2E7D4F" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          Análise correta da renda familiar
+        </div>
+        <div class="comp-item">
+          <svg width="16" height="16" fill="none" stroke="#2E7D4F" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          Organização de todos os documentos
+        </div>
+        <div class="comp-item">
+          <svg width="16" height="16" fill="none" stroke="#2E7D4F" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          Avaliação dos riscos de negativa
+        </div>
+        <div class="comp-item">
+          <svg width="16" height="16" fill="none" stroke="#2E7D4F" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          Orientação para o pedido ou recurso
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ METHOD ══════════════ -->
+<div class="method-bg">
+  <div class="section">
+    <h2 class="section-title">NOSSO MÉTODO: <em>PEDIDO BPC SEGURO</em></h2>
+    <div class="steps" style="margin-top:48px;">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div>
+          <h4>Análise do caso e da família</h4>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div>
+          <h4>Conferência do CadÚnico e renda</h4>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div>
+          <h4>Organização dos documentos e laudos</h4>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div>
+          <h4>Avaliação dos riscos de negativa</h4>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div>
+          <h4>Estratégia para pedido ou recurso</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ ABOUT ══════════════ -->
+<div class="about-bg">
+  <div class="section">
+    <div class="about-inner">
+      <div class="about-photo">👩‍⚖️</div>
+      <div>
+        <div class="about-name">Dra. Letícia Soares</div>
+        <div class="about-title">Advogada Previdenciária</div>
+        <p class="about-desc">Especialista em Direito Previdenciário e Benefícios Assistenciais. Atuação 100% online em todo o Brasil, com atendimento humanizado, sigiloso e focado em resultados.</p>
+        <div class="about-badges">
+          <div class="about-badge">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Experiência em BPC/LOAS e recursos
+          </div>
+          <div class="about-badge">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            Atualização constante na área previdenciária
+          </div>
+          <div class="about-badge">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            Atendimento humano e personalizado
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ FAQ ══════════════ -->
+<div class="faq-bg">
+  <div class="section" style="padding-top:50px; padding-bottom:50px;">
+    <h2 class="section-title" style="margin-bottom:32px;">Perguntas Frequentes</h2>
+    <div class="faq-list">
+      <div class="faq-item open">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Quem tem direito ao BPC/LOAS?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Têm direito ao BPC/LOAS pessoas com 65 anos ou mais e pessoas com deficiência de qualquer idade que comprovem renda familiar per capita inferior a ¼ do salário mínimo. É necessário estar inscrito no CadÚnico e não receber outro benefício previdenciário.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Qual o valor do BPC/LOAS?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">O BPC/LOAS equivale a 1 salário mínimo mensal, pago pelo INSS. Em 2025, o salário mínimo é de R$ 1.518,00. O benefício não gera 13º salário.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Meu pedido foi negado. Ainda tenho direito?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Sim! A negativa do INSS não é definitiva. Você pode entrar com recurso administrativo ou judicial. Em muitos casos, a negativa ocorre por erro de análise ou documentação incompleta, o que pode ser corrigido com a orientação certa.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ CTA BANNER ══════════════ -->
+<div class="cta-banner">
+  <p>Não deixe o INSS decidir com <em>documentos incompletos.</em></p>
+  <small>Organize seu pedido com segurança e aumente suas chances.</small>
+  <a href="https://wa.me/5531992681501" class="btn-cta">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.117 1.523 5.848L0 24l6.335-1.51A11.955 11.955 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.896 0-3.67-.525-5.184-1.436l-.372-.222-3.76.897.912-3.664-.242-.382A9.944 9.944 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+    Quero Verificar Meu BPC/LOAS Agora
+  </a>
+</div>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+  <a href="#" class="logo">
+    <div class="logo-mark">LS</div>
+    <div class="logo-text">
+      <strong>Letícia Soares</strong>
+      <span>Advocacia Previdenciária</span>
+    </div>
+  </a>
+  <div class="footer-info">
+    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.63 3.34 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.69a16 16 0 0 0 6.29 6.29l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    (31) 99268-1501 — Atendimento Online
+  </div>
+  <div class="footer-info">
+    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+    Sigilo e proteção de dados
+  </div>
+  <div class="footer-info">
+    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+    Atendimento em todo o Brasil
+  </div>
+</footer>
+
+<script>
+  // Quiz option selection
+  document.querySelectorAll('.quiz-option').forEach(opt => {
+    opt.addEventListener('click', () => {
+      document.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected'));
+      opt.classList.add('selected');
+    });
+  });
+
+  // FAQ toggle
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // --- INTEGRAÇÃO GTM E WEBHOOK ---
+  const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbz7IrcPwlTkP9H6Jyb9byd7doMgAxtLH1ARZ_yQSH8QkuHfw0BxY3p_JWvTJqsX0hnIvA/exec';
+  const PAGE_CATEGORY = 'BPC-LOAS'; // Altere para 'Aposentadoria' ou 'Auxilio-Doenca' nas outras LPs
+  window.dataLayer = window.dataLayer || [];
+  
+  let formStarted = false;
+  document.getElementById('quiz-form').addEventListener('focusin', () => {
+    if (!formStarted) {
+      window.dataLayer.push({ event: 'form_start', categoria: PAGE_CATEGORY });
+      formStarted = true;
+    }
+  });
+
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('a');
+    if (btn && btn.href.includes('wa.me')) {
+      window.dataLayer.push({ event: 'whatsapp_click', categoria: PAGE_CATEGORY });
+    }
+  });
+
+  let currentStep = 1;
+  const totalSteps = 8;
+  const formData = {};
+
+  function startQuiz() {
+    document.getElementById('quiz-intro').style.display = 'none';
+    document.getElementById('quiz-form').style.display = 'block';
+  }
+
+  function updateProgress() {
+    const pct = (currentStep / totalSteps) * 100;
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('step-text').innerText = `ETAPA ${currentStep} DE ${totalSteps}`;
+    document.getElementById('step-percent').innerText = Math.round(pct) + '%';
+    
+    document.querySelectorAll('.quiz-step').forEach(el => el.style.display = 'none');
+    document.getElementById('step-' + currentStep).style.display = 'block';
+
+    document.getElementById('btn-prev').style.display = currentStep > 1 ? 'block' : 'none';
+    
+    if (currentStep === totalSteps) {
+      document.getElementById('btn-next').innerHTML = 'Finalizar Análise <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+    } else {
+      document.getElementById('btn-next').innerHTML = 'Próximo <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+    }
+  }
+
+  function nextStep() {
+    if (currentStep < 8) {
+      const selected = document.querySelector(`input[name="q${currentStep}"]:checked`);
+      if (!selected) {
+        alert('Por favor, selecione uma opção para continuar.');
+        return;
+      }
+      formData[`q${currentStep}`] = selected.value;
+    } else {
+      const name = document.getElementById('contact-name').value;
+      const phone = document.getElementById('contact-phone').value;
+      const city = document.getElementById('contact-city').value;
+      const time = document.querySelector('input[name="q8_time"]:checked');
+      
+      if (!name || !phone || !city || !time) {
+        alert('Por favor, preencha todos os campos.');
+        return;
+      }
+      formData.name = name;
+      formData.phone = phone;
+      formData.city = city;
+      formData.time = time.value;
+    }
+
+    if (currentStep < totalSteps) {
+      window.dataLayer.push({ event: 'form_step_complete', step: currentStep, categoria: PAGE_CATEGORY });
+      currentStep++;
+      updateProgress();
+    } else {
+      processarQualificacao();
+    }
+  }
+
+  function prevStep() {
+    if (currentStep > 1) {
+      currentStep--;
+      updateProgress();
+    }
+  }
+
+  const phoneInput = document.getElementById('contact-phone');
+  if (phoneInput) {
+      phoneInput.addEventListener('input', (e) => {
+          let val = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
+          e.target.value = !val[2] ? val[1] : '(' + val[1] + ') ' + val[2] + (val[3] ? '-' + val[3] : '');
+      });
+  }
+
+  async function processarQualificacao() {
+    document.getElementById('quiz-form').style.display = 'none';
+    const resultDiv = document.getElementById('quiz-result');
+    resultDiv.style.display = 'block';
+    
+    const idadeOk = formData.q2 === "65 anos ou mais";
+    const deficienciaOk = formData.q3 === "Sim, com laudo médico recente";
+    const temCadUnico = formData.q4 === "Possui atualizado" || formData.q4 === "Possui desatualizado" || formData.q4 === "Não possui";
+    const pessoas = parseInt(formData.q5) || 1;
+    let rendaValor = 0;
+    if (formData.q6 === "0") rendaValor = 0;
+    else if (formData.q6 === "800") rendaValor = 800;
+    else if (formData.q6 === "1600") rendaValor = 1600;
+    else if (formData.q6 === "2500") rendaValor = 2500;
+    else if (formData.q6 === "2501+") rendaValor = 3000;
+
+    const rendaPerCapita = rendaValor / pessoas;
+    
+    let status = 'NAO_QUALIFICADO';
+
+    if ((idadeOk || deficienciaOk) && rendaPerCapita <= 380 && temCadUnico) {
+      status = 'QUALIFICADO';
+    } else if ((idadeOk || formData.q3 !== "Não possui") && rendaPerCapita <= 800) {
+      status = 'PARCIAL';
+    } else {
+      status = 'NAO_QUALIFICADO';
+    }
+    
+    const finalClassificacao = status === 'QUALIFICADO' ? 'Qualificado' : 'Não Qualificado';
+
+    if (status === 'QUALIFICADO') {
+      window.dataLayer.push({ event: 'lead_qualified', categoria: PAGE_CATEGORY });
+    }
+
+    const payload = {
+      categoria: PAGE_CATEGORY,
+      origem: window.location.href,
+      nome: formData.name || '',
+      whatsapp: formData.phone || '',
+      cidade: formData.city || '',
+      resposta1: formData.q1 || '',
+      resposta2: formData.q2 || '',
+      classificacao: finalClassificacao,
+      horario: new Date().toLocaleString('pt-BR')
+    };
+
+    try {
+      await fetch(WEBHOOK_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+    } catch(e) {
+      console.error('Erro ao salvar lead', e);
+    }
+
+    if (status === 'QUALIFICADO') {
+      resultDiv.innerHTML = `
+        <h2 style="font-family: 'Playfair Display', serif; font-size: 26px; color: var(--dark); margin-bottom: 16px;">🎉 Excelente! Grande possibilidade de direito ao benefício</h2>
+        <p style="color: var(--gray); font-size: 16px; margin-bottom: 24px;">Com base nas suas respostas, seu caso apresenta os requisitos necessários. Nossa equipe entrará em contato em até 24h. Se preferir falar agora:</p>
+        <a href="https://wa.me/5531992681501?text=Olá, fiz a avaliação para o BPC e o resultado foi Qualificado!" class="btn-cta" style="width: 100%; justify-content: center;">Falar Agora com a Dra. Letícia</a>
+      `;
+    } else if (status === 'PARCIAL') {
+      resultDiv.innerHTML = `
+        <h2 style="font-family: 'Playfair Display', serif; font-size: 26px; color: var(--dark); margin-bottom: 16px;">Recebemos suas informações!</h2>
+        <p style="color: var(--gray); font-size: 16px; margin-bottom: 24px;">Seu caso precisa de análise detalhada. Entraremos em contato em até 24h sobre próximos passos.</p>
+      `;
+    } else {
+      resultDiv.innerHTML = `
+        <h2 style="font-family: 'Playfair Display', serif; font-size: 26px; color: var(--dark); margin-bottom: 16px;">Obrigada pelo interesse!</h2>
+        <p style="color: var(--gray); font-size: 16px; margin-bottom: 24px;">Não identificamos enquadramento no momento. Baixe nosso guia gratuito:</p>
+        <a href="#" class="btn-cta" style="width: 100%; justify-content: center;">Baixar Guia Completo</a>
+      `;
+    }
+  }
+</script>
+</body>
+</html>
